@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hello Taylor</string>
+    <string name="greeting">Yahoo, I am an Android</string>
+</resources>
