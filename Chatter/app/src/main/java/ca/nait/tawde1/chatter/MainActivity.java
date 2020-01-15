@@ -3,7 +3,9 @@ package ca.nait.tawde1.chatter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,6 +18,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy ourPolicy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(ourPolicy);
+        }
 
         Button sendButton = findViewById(R.id.button_send);
         Button viewButton = findViewById(R.id.button_view);
