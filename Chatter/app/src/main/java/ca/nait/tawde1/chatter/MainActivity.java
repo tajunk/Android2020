@@ -9,7 +9,18 @@ import android.os.StrictMode;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener
 {
@@ -40,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
         {
             case R.id.button_send:
             {
+                EditText textBox = findViewById(R.id.edit_text_message);
+                String chatter = textBox.getText().toString();
+                postToServer(chatter);
+                textBox.setText("");
                 break;
             }
             case R.id.button_view:
@@ -48,6 +63,25 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
                 startActivity(intent);
                 break;
             }
+        }
+    }
+
+    private void postToServer(String message)
+    {
+        try
+        {
+            HttpClient client = new DefaultHttpClient();
+            HttpPost form = new HttpPost("http://www.youcode.ca/JitterServlet");
+            List<NameValuePair> formParameters = new ArrayList<NameValuePair>();
+            formParameters.add(new BasicNameValuePair("DATA", message));
+            formParameters.add(new BasicNameValuePair("LOGIN_NAME", "Dad" ));
+            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(formParameters);
+            form.setEntity(formEntity);
+            client.execute(form);
+        }
+        catch(Exception e)
+        {
+            Toast.makeText(this, "Error: " + e, Toast.LENGTH_LONG).show();
         }
     }
 }
