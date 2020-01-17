@@ -1,8 +1,13 @@
 package ca.nait.tawde1.chatter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +28,43 @@ public class ReceiveActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receive);
         getFromServer();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+//        works as MenuInflater inflater = getMenuInflater();
+//        but using 'this' for self called classes enables intellisense
+        MenuInflater inflater = this.getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.menu_item_view_home:
+            {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_view_text_view:
+            {
+                Intent intent = new Intent(this, ReceiveActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_view_system_list:
+            {
+                Intent intent = new Intent(this, SystemListActivity.class);
+                startActivity(intent);
+                break;
+            }
+        }
+        return true;
     }
 
     private void getFromServer()

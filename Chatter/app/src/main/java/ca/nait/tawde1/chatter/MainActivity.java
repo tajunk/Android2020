@@ -1,11 +1,15 @@
 package ca.nait.tawde1.chatter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -45,6 +49,43 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+//        works as MenuInflater inflater = getMenuInflater();
+//        but using 'this' for self called classes enables intellisense
+        MenuInflater inflater = this.getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.menu_item_view_home:
+            {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_view_text_view:
+            {
+                Intent intent = new Intent(this, ReceiveActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_view_system_list:
+            {
+                Intent intent = new Intent(this, SystemListActivity.class);
+                startActivity(intent);
+                break;
+            }
+        }
+        return true;
+    }
+
+    @Override
     public void onClick(View view)
     {
         switch(view.getId())
@@ -74,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
             HttpPost form = new HttpPost("http://www.youcode.ca/JitterServlet");
             List<NameValuePair> formParameters = new ArrayList<NameValuePair>();
             formParameters.add(new BasicNameValuePair("DATA", message));
-            formParameters.add(new BasicNameValuePair("LOGIN_NAME", "Dad" ));
+            formParameters.add(new BasicNameValuePair("LOGIN_NAME", "BigPoppa" ));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(formParameters);
             form.setEntity(formEntity);
             client.execute(form);
