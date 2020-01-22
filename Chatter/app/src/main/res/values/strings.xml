@@ -5,4 +5,5 @@
     <string name="button_send_text">Post Chatter</string>
     <string name="button_view_text">View Chatter</string>
     <string name="view_title_text">Last 30 Chats</string>
+    <string name="list_view_empty_text">No chatter available</string>
 </resources>
