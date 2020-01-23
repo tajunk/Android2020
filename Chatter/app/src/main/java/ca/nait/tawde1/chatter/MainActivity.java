@@ -4,9 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,8 +29,11 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener
+public class MainActivity extends AppCompatActivity implements OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener
 {
+    SharedPreferences prefs;
+    View mainView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -40,6 +46,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
                     new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(ourPolicy);
         }
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.registerOnSharedPreferenceChangeListener(this);
+
+        mainView = findViewById(R.id.linear_layout_main);
+        String bgColor = prefs.getString("preference_main_bg_color", "#990000");
+        mainView.setBackgroundColor(Color.parseColor(bgColor));
 
         Button sendButton = findViewById(R.id.button_send);
         Button viewButton = findViewById(R.id.button_view);
@@ -87,6 +100,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
                 startActivity(intent);
                 break;
             }
+            case R.id.menu_item_preferences:
+            {
+                Intent intent = new Intent(this, PrefsActivity.class);
+                startActivity(intent);
+                break;
+            }
         }
         return true;
     }
@@ -115,13 +134,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
 
     private void postToServer(String message)
     {
+        String userName = prefs.getString("preference_user_name", "unknown");
         try
         {
             HttpClient client = new DefaultHttpClient();
             HttpPost form = new HttpPost("http://www.youcode.ca/JitterServlet");
             List<NameValuePair> formParameters = new ArrayList<NameValuePair>();
             formParameters.add(new BasicNameValuePair("DATA", message));
-            formParameters.add(new BasicNameValuePair("LOGIN_NAME", "BigPoppa" ));
+            formParameters.add(new BasicNameValuePair("LOGIN_NAME", userName ));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(formParameters);
             form.setEntity(formEntity);
             client.execute(form);
@@ -130,5 +150,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener
         {
             Toast.makeText(this, "Error: " + e, Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+    {
+        String bgColor = prefs.getString("preference_main_bg_color", "#990000");
+        mainView.setBackgroundColor(Color.parseColor(bgColor));
     }
 }
