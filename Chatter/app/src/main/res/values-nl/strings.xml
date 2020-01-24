@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="send_title_text">Begin Met Praten</string>
+    <string name="edit_text_hint">Typ hier</string>
+    <string name="button_send_text">Bericht Versturen</string>
+</resources>
