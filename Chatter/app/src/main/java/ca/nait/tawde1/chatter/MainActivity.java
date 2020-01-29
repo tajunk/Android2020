@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         prefs.registerOnSharedPreferenceChangeListener(this);
 
         mainView = findViewById(R.id.linear_layout_main);
-        String bgColor = prefs.getString("preference_main_bg_color", "#990000");
+        String bgColor = prefs.getString(getResources().getString(R.string.preference_key_main_bg_color), "#990000");
         mainView.setBackgroundColor(Color.parseColor(bgColor));
 
         Button sendButton = findViewById(R.id.button_send);
@@ -134,7 +134,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
 
     private void postToServer(String message)
     {
-        String userName = prefs.getString("preference_user_name", "unknown");
+        String key = getResources().getString(R.string.preference_key_user_name);
+        String userName = prefs.getString(key, "unknown");
         try
         {
             HttpClient client = new DefaultHttpClient();
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
     {
-        String bgColor = prefs.getString("preference_main_bg_color", "#990000");
+        String bgColor = prefs.getString(getResources().getString(R.string.preference_key_main_bg_color), "#990000");
         mainView.setBackgroundColor(Color.parseColor(bgColor));
     }
 }

@@ -21,6 +21,9 @@ import java.util.HashMap;
 
 public class CustomListActivity extends ListActivity
 {
+    public static final String SENDER = "sender";
+    public static final String TEXT = "text";
+    public static final String DATE = "myDate";
     ArrayList<HashMap<String,String>> chatter = new ArrayList<HashMap<String,String>>();
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,7 +35,7 @@ public class CustomListActivity extends ListActivity
 
     private void displayChatter()
     {
-        String[] keys = new String[]{"sender", "text", "myDate"};
+        String[] keys = new String[]{SENDER, TEXT, DATE};
         int[] ids = new int[]{R.id.text_view_custom_row_sender, R.id.text_view_custom_row_message,
                 R.id.text_view_custom_row_date};
         SimpleAdapter adapter = new SimpleAdapter(this, chatter, R.layout.custom_row, keys, ids);
@@ -58,13 +61,13 @@ public class CustomListActivity extends ListActivity
             while((line = in.readLine()) != null)
             {
                 HashMap<String,String> tempMap = new HashMap<String,String>();
-                tempMap.put("sender",line);
+                tempMap.put(SENDER,line);
 
                 line = in.readLine();
-                tempMap.put("text", line);
+                tempMap.put(TEXT, line);
 
                 line = in.readLine();
-                tempMap.put("myDate", line);
+                tempMap.put(DATE, line);
 
                 chatter.add(tempMap);
             }
