@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidLab01</string>
+    <string name="app_title_text">Oscar Reviews</string>
+    <string name="radio_text_picture">Best Picture</string>
+    <string name="radio_text_actor">Best Actor</string>
+    <string name="radio_text_actress">Best Actress</string>
+    <string name="radio_text_editing">Film Editing</string>
+    <string name="radio_text_effects">Visual Effects</string>
+    <string name="app_title_hint_nominee">Enter your nominee</string>
+    <string name="app_title_hint_review">Enter your review</string>
+</resources>
