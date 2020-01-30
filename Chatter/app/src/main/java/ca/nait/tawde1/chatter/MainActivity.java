@@ -100,6 +100,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 startActivity(intent);
                 break;
             }
+            case R.id.menu_item_layout_options:
+            {
+                Intent intent = new Intent(this, LayoutActivity.class);
+                startActivity(intent);
+                break;
+            }
             case R.id.menu_item_preferences:
             {
                 Intent intent = new Intent(this, PrefsActivity.class);
