@@ -8,4 +8,16 @@
     <string name="radio_text_effects">Visual Effects</string>
     <string name="app_title_hint_nominee">Enter your nominee</string>
     <string name="app_title_hint_review">Enter your review</string>
+    <string name="app_title_button">Send</string>
+    <string name="preference_key_user_name">user_name</string>
+    <string name="preference_user_name">Login Name</string>
+    <string name="preference_user_name_summary">Set or change login name</string>
+    <string name="preference_key_password">password</string>
+    <string name="preference_password">Password</string>
+    <string name="preference_password_summary">Set or change password</string>
+    <string name="preference_key_main_bg_color">main_bg_color</string>
+    <string name="preference_main_bg_color_title">Background Color</string>
+    <string name="preference_main_bg_color_summary">Change current background color</string>
+    <string name="preference_url_title">http://www.youcode.ca/Lab01Servlet</string>
+    <string name="preference_url_summary">URL of Web-Services</string>
 </resources>

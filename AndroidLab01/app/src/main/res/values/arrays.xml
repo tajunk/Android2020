@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="color_names">
+        <item name="default">Default</item>
+        <item name="grey">Grey</item>
+        <item name="orange">Orange</item>
+        <item name="blue">Blue</item>
+        <item name="pink">Pink</item>
+        <item name="red">Red</item>
+    </string-array>
+    <string-array name="color_values">
+        <item name="default">#FCF8CF</item>
+        <item name="grey">#A4A294</item>
+        <item name="orange">#F3B276</item>
+        <item name="blue">#B0D0E8</item>
+        <item name="pink">#E0BEF0</item>
+        <item name="red">#F75D5D</item>
+    </string-array>
+</resources>

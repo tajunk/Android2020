@@ -14,6 +14,7 @@
         android:textColor="@color/title_text_color"
         android:textSize="32sp"/>
     <RadioGroup
+        android:id="@+id/radio_group_categories"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -24,30 +25,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_text_picture"
+            android:tag="picture"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton
             android:id="@+id/radio_category_actor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_text_actor"
+            android:tag="actor"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton
             android:id="@+id/radio_category_actress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_text_actress"
+            android:tag="actress"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton
             android:id="@+id/radio_category_editing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_text_editing"
+            android:tag="editing"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton
             android:id="@+id/radio_category_effects"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_text_effects"
+            android:tag="effects"
             android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
     <EditText
@@ -66,5 +72,11 @@
         android:hint="@string/app_title_hint_review"
         android:background="@color/title_text_bg"
         android:id="@+id/text_box_review"/>
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/app_title_button"
+        android:layout_gravity="center_horizontal"
+        />
 
 </LinearLayout>
