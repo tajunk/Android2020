@@ -77,6 +77,7 @@
         android:layout_height="wrap_content"
         android:text="@string/app_title_button"
         android:layout_gravity="center_horizontal"
+        android:id="@+id/button_send"
         />
 
 </LinearLayout>
