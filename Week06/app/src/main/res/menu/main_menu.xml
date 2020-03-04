@@ -4,6 +4,9 @@
         android:id="@+id/menu_item_home"
         android:title="@string/menu_item_home" />
     <item
+        android:id="@+id/menu_item_fragment_activity"
+        android:title="Fragment Activity" />
+    <item
         android:id="@+id/menu_item_display_chatter"
         android:title="@string/menu_item_display_chatter" />
     <item

@@ -70,6 +70,12 @@ public class BaseActivity extends AppCompatActivity
                 Log.d(TAG, "display chatter");
                 break;
             }
+            case R.id.menu_item_fragment_activity:
+            {
+                startActivity(new Intent(this, FragmentActivity.class) );
+                Log.d(TAG, "display chatter");
+                break;
+            }
             case R.id.menu_item_view_cursor:
             {
                 startActivity(new Intent(this, CursorActivity.class) );
